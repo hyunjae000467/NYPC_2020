@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <math.h>
+#include <algorithm>
+using namespace std;
+
+typedef struct ARR{
+    int num;
+    int m_skill;
+    int skill;
+}def;
+
+bool cmp(def usr1, def usr2)
+{
+    if(usr1.m_skill<usr2.m_skill) return true;
+    if(usr1.m_skill==usr2.m_skill)
+    {
+        if(usr1.skill<usr2.skill) return true;
+    }
+    return false;
+}
+
+int main()
+{
+    def usr[500009];
+    int N;
+    int S,K;
+    scanf("%d",&N);
+    scanf("%d %d",&S,&K);//실력, 구해야하는 사람 수
+    for(int i=0;i<N;i++)
+    {
+        int p;
+        scanf("%d",&p);
+        usr[i].num=i+1;//번호
+        usr[i].m_skill=abs(S-p);//실력차
+        usr[i].skill=p;//실력
+    }
+    sort(usr,usr+N,cmp);
+    for(int i=0;i<K;i++)
+    {
+        printf("%d ",usr[i].num);
+    }
+}
