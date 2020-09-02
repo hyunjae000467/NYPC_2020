@@ -1,0 +1,46 @@
+#include <stdio.h>
+int main()
+{
+    int dao[1001][5];
+    int bazzi[1001][5];
+    
+    int T;
+    scanf("%d",&T);
+    for(int i=0;i<T;i++)
+    {
+        int best_bazzi=0;
+        int best_dao=0;
+        int sum_bazzi=0;
+        int sum_dao=0;
+        bool speed=false;//win=true
+        bool item=false;//win=true
+        for(int j=1;j<=4;j++)
+        {
+            scanf("%d",&bazzi[i][j]);
+            sum_bazzi+=bazzi[i][j];
+            if(best_bazzi<bazzi[i][j]) best_bazzi=bazzi[i][j];
+        }
+        for(int j=1;j<=4;j++)
+        {
+            scanf("%d",&dao[i][j]);
+            sum_dao+=dao[i][j];
+            if(best_dao<dao[i][j]) best_dao=dao[i][j];
+        }
+        //Speed
+        if(sum_bazzi>sum_dao)
+        {
+            speed=true;
+        }
+        //Item
+        if(best_bazzi>best_dao)
+        {
+            item=true;
+        }
+        if(speed==true&&item==false) printf("S");
+        if(speed==false&&item==true) printf("I");
+        if(speed==true&&item==true) printf("R");
+        if(speed==false&&item==false)printf("R");
+		printf("\n");
+    }
+    return 0;
+}
