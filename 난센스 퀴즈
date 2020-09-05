@@ -1,114 +1,46 @@
 #include <stdio.h>
-int main()
-{
+
+int main() {
     int T;
-    scanf("%d",&T);
-    for(int i=0;i<T;i++)
-    {
-        int A,B,C,D;
-        scanf("%d %d %d %d",&A,&B,&C,&D);
-        //총 25가지 경우의 수 전체 시도
-        //A+B?C=D
-        if(A+B+C==D){
-            printf("%d+%d+%d=%d\n",A,B,C,D);
-            continue;
+    scanf("%d", &T);
+    for (int i = 0; i < T; i++) {
+        double a, b, c, d;
+        scanf("%lf %lf %lf %lf", &a, &b, &c, &d);
+        if (a + b + c == d) {
+            printf("%.0f+%.0f+%.0f=%.0f\n", a, b, c, d);
+        } else if (a + b - c == d) {
+            printf("%.0f+%.0f-%.0f=%.0f\n", a, b, c, d);
+        } else if (a - b + c == d) {
+            printf("%.0f-%.0f+%.0f=%.0f\n", a, b, c, d);
+        } else if (a - b - c == d) {
+            printf("%.0f-%.0f-%.0f=%.0f\n", a, b, c, d);
+        } else if (a * b + c == d) {
+            printf("%.0f*%.0f+%.0f=%.0f\n", a, b, c, d);
+        } else if (a * b - c == d) {
+            printf("%.0f*%.0f-%.0f=%.0f\n", a, b, c, d);
+        } else if (a * b / c == d) {
+            printf("%.0f*%.0f/%.0f=%.0f\n", a, b, c, d);
+        } else if (a * b * c == d) {
+            printf("%.0f*%.0f*%.0f=%.0f\n", a, b, c, d);
         }
-        else if(A+B-C==D){
-            printf("%d+%d-%d=%d\n",A,B,C,D);
-            continue;
+            //
+        else if (a + b * c == d) {
+            printf("%.0f+%.0f*%.0f=%.0f\n", a, b, c, d);
+        } else if (a - b * c == d) {
+            printf("%.0f-%.0f*%.0f=%.0f\n", a, b, c, d);
+        } else if (a / b * c == d) {
+            printf("%.0f/%.0f*%.0f=%.0f\n", a, b, c, d);
         }
-        else if(A+B*C==D){
-            printf("%d+%d*%d=%d\n",A,B,C,D);
-            continue;
+        else if(a+b/c==d){
+            printf("%.0f+%.0f/%.0f==%.0f\n",a,b,c,d);
         }
-        else if(A+B/C==D){
-            printf("%d+%d/%d=%d\n",A,B,C,D);
-            continue;
+        //a.b*c
+        else if(a*c+b*c/10==d){
+            printf("%.0f.%.0f*%.0f=%.0f\n", a, b, c, d);
         }
-            //////////////////
-        else if(A-B+C==D){
-            printf("%d-%d+%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A-B-C==D){
-            printf("%d-%d-%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A-B*C==D){
-            printf("%d-%d*%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A-B/C==D){
-            printf("%d-%d/%d=%d\n",A,B,C,D);
-            continue;
-        }
-            ///////////////
-        else if(A*B+C==D){
-            printf("%d*%d+%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A*B-C==D){
-            printf("%d*%d-%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A*B*C==D){
-            printf("%d*%d*%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A*B/C==D){
-            printf("%d*%d/%d=%d\n",A,B,C,D);
-            continue;
-        }
-            /////////////////////
-        else if(A/B+C==D){
-            printf("%d/%d+%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A/B-C==D){
-            printf("%d/%d-%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A/B*C==D){
-            printf("%d/%d*%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A/B/C==D){
-            printf("%d/%d/%d=%d\n",A,B,C,D);
-            continue;
-        }
-            //float 연산 파트
-            //A.B파트 먼저
-        else if((A+B/10)+C==D){
-            printf("%d.%d+%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if((A+B/10)-C==D){
-            printf("%d.%d-%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if((A+B/10)*C==D){
-            printf("%d.%d*%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if((A+B/10)/C==D){
-            printf("%d.%d/%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A+(B+C/10)==D){
-            printf("%d+%d.%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A-(B+C/10)==D){
-            printf("%d-%d.%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A*(B+C/10)==D){
-            printf("%d*%d.%d=%d\n",A,B,C,D);
-            continue;
-        }
-        else if(A/(B+C/10)==D){
-            printf("%d/%d.%d=%d\n",A,B,C,D);
-            continue;
+        //b.c*a
+        else if(b*a+c*a/10==d){
+            printf("%.0f*%.0f.%.0f=%.0f\n", a, b, c, d);
         }
     }
     return 0;
