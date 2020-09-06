@@ -1,35 +1,49 @@
 #include <stdio.h>
-int count[1001];
-int cnt=0;
-int winner[1001];
-int main()
-{
+#include <algorithm>
+#include <set>
+
+using namespace std;
+set<int> winner;
+int check[1001];
+int record[1001];
+
+void clear() {
+    for (int i = 0; i <= 1000; i++) {
+        check[i] = 0;
+    }
+}
+
+int main() {
     int N;
     int K;
-    scanf("%d",&N);
-    scanf("%d",&K);
-    for(int i=0;i<K;i++)
-    {
-        int player;
-        scanf("%d",&player);
-        count[player]++;
-        if(count[player]==2)
-        {
-            bool con=false;
-            for(int j=0;j<cnt;j++)
-            {
-                if(player==winner[j]) con=true;
-            }
-            if(con) continue;
-            winner[cnt]=player;
-            cnt++;
-            for(int a=1;a<=N;a++) count[a]=0;
-        }
+    int cnt = 0;
+
+    scanf("%d", &N);
+    scanf("%d", &K);
+    for(int i=0;i<N;i++)
+    for (int i = 0; i < K; i++) {
+        scanf("%d", &record[i]);
     }
-    printf("%d\n",cnt);
-    for(int i=0;i<cnt;i++)
-    {
-        printf("%d ",winner[i]);
+    for (int i = 0; i < K; i++) {
+        for (int j = i + 1; j < K; j++) {
+            if (winner.find(record[i])!=winner.end()) {
+                break;
+            }
+            if (record[j] == record[i]) {
+                winner.insert(record[i]);
+                break;
+            }
+            check[record[j]]++;
+            if (check[record[j]] >= 2) {
+                break;
+            }
+        }
+        clear();
+    }
+    cnt = winner.size();
+    printf("%d\n", cnt);
+    for (auto it = winner.begin(); it != winner.end(); it++) {
+        printf("%d ", *it);
     }
     return 0;
 }
