@@ -58,8 +58,16 @@ int main() {
         int A = (int) a;
         int B = (int) b;
         int C = (int) c;
+        //a/b.c=d
+        //b.c*d=a
+        //bc*d=10a
+        //(10b+c)*d
         if (10*A*C+B*C == 10 * D) {
             printf("%d.%d*%d=%d\n", (int) a, (int) b, (int) c, (int) d);
+        }
+        else if(10*B*D+D*C==10*A)
+        {
+            printf("%d/%d.%d=%d\n", (int) a, (int) b, (int) c, (int) d);
         }
         else if (10 * B * A + C * A == 10 * D) {
             printf("%d*%d.%d=%d\n", (int) a, (int) b, (int) c, (int) d);
